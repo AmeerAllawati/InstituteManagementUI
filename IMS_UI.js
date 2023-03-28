@@ -40,6 +40,8 @@ submitStudentsBtn.addEventListener('click', () => {
     const emailInput = document.getElementById('email-input').value;
 
 
+    
+
     const formData = {
         id: idInput,
         name: nameInput,
