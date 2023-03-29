@@ -40,7 +40,7 @@ submitStudentsBtn.addEventListener('click', () => {
     const emailInput = document.getElementById('email-input').value;
 
 
-    
+
 
     const formData = {
         id: idInput,
@@ -48,6 +48,9 @@ submitStudentsBtn.addEventListener('click', () => {
         email: emailInput
     };
 
+
+
+    
     fetch('http://localhost:8080/', {
         method: 'POST',
         headers: {
