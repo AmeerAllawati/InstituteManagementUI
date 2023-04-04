@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Institute Management System</title>
+    <link rel="stylesheet" type="text/css" href="IMS_UI.css">
+</head>
+
+
+
+<body>
+    <h1>Institute Management System</h1>
+
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput0">ID</label>
+            <input id="id-input" type="text" class="form-control" id="exampleFormControlInput0" placeholder="1">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput">Name</label>
+            <input id="name-input" type="text" class="form-control" id="exampleFormControlInput" placeholder="Joe Anna">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input id="email-input" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+    </form>
+
+
+    
+    <div>
+        <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+        <button type="update" class="btn btn-primary" id="update-btn">Update</button>
+        <button type="delete" class="btn btn-primary" id="delete-btn">Delete</button>
+    </div>
+    <br>
+    <div class="form-group">
+        <ul class="list-group" id="students-list">
+            <li class="list-group-item disabled">Student names: </li>
+
+        </ul>
+    </div>
+    <script src="./IMS_UI.js"></script>
+</body>
+
+</html>
