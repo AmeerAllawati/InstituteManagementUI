@@ -1,46 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Institute Management System</title>
-    <link rel="stylesheet" type="text/css" href="IMS_UI.css">
-</head>
-
-
-
-<body>
-    <h1>Institute Management System</h1>
-
-    <form>
-        <div class="form-group">
-            <label for="exampleFormControlInput0">ID</label>
-            <input id="id-input" type="text" class="form-control" id="exampleFormControlInput0" placeholder="1">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput">Name</label>
-            <input id="name-input" type="text" class="form-control" id="exampleFormControlInput" placeholder="Joe Anna">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Email address</label>
-            <input id="email-input" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-    </form>
-
-
-    
-    <div>
-        <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
-        <button type="update" class="btn btn-primary" id="update-btn">Update</button>
-        <button type="delete" class="btn btn-primary" id="delete-btn">Delete</button>
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+      body {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin: auto;
+        width: 50%;
+        margin-top: 10%;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      label {
+        font-size: 18px;
+      }
+      input[type="text"], input[type="password"] {
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #e5e5e5;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      .error {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form id="login-form">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Login">
+        <div id="error-message" class="error"></div>
+      </form>
     </div>
-    <br>
-    <div class="form-group">
-        <ul class="list-group" id="students-list">
-            <li class="list-group-item disabled">Student names: </li>
+    <script>
+      const form = document.getElementById('login-form');
 
-        </ul>
-    </div>
-    <script src="./IMS_UI.js"></script>
-</body>
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Save credentials to local storage
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
 
+        // Send login request using fetch()
+        const url = 'http://localhost:8080git/check';
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Basic ${btoa(`${username}:${password}`)}`
+          }
+        })
+        .then(response => {
+          if (response.status === 200) {
+            window.location.replace('home.html');
+          } else {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.innerHTML = 'Invalid username or password';
+          }
+        })
+        .catch(error => console.error(error));
+      });
+    </script>
+  </body>
 </html>

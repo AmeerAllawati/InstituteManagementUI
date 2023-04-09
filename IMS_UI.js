@@ -24,6 +24,8 @@ function displayStudents() {
         })
 }
 
+
+
 const username = 'admin';
 const password = 'new_password';
 const authEncoded = btoa(username + ':' + password);
@@ -50,7 +52,7 @@ submitStudentsBtn.addEventListener('click', () => {
 
 
 
-    
+
     fetch('http://localhost:8080/', {
         method: 'POST',
         headers: {
